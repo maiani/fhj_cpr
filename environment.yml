@@ -1,0 +1,16 @@
+name: fhj
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy 
+  - scipy 
+  - tqdm 
+  - matplotlib 
+  - xarray 
+  - dask
+  - dask-jobqueue
+  - kwant
+  - sympy
+  - ipykernel
