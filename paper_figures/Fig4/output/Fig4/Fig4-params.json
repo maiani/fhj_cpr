@@ -1,0 +1,14 @@
+{
+    "k_c": 1465.3777384615385,
+    "alpha_x": 0,
+    "alpha_y": 0,
+    "alpha_z": 0,
+    "V": "        \"V\": lambda *args: 0,\n",
+    "Delta": "        \"Delta\": lambda *args: 0,\n",
+    "theta": "        \"theta\": lambda *args: 0,\n",
+    "h_x": "        \"h_x\": lambda *args: 0,\n",
+    "h_y": "        \"h_y\": lambda *args: 0,\n",
+    "h_z": "        \"h_z\": lambda *args: 0,\n",
+    "cos": null,
+    "sin": null
+}
