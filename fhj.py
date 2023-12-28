@@ -2,10 +2,9 @@ import kwant
 import numpy as np
 import sympy as sym
 from kwant.continuum import discretize, sympify
-from physics_utils import pauli
 
 
-def fnwjj_hamiltonian_sym(dims):
+def fhj_hamiltonian_sym(dims):
     """
     Generate a symbolic Hamiltonian of the effective model for a ferromagnetic hybird junction.
 
@@ -46,7 +45,7 @@ def make_2D_system(L_x, L_y, a_x, a_y, finalized=True):
     lat = kwant.lattice.Monatomic(
         [[a_x, 0], [0, a_y]], offset=None, name="wire", norbs=4
     )
-    hamiltonian = fnwjj_hamiltonian_sym(dims=2)
+    hamiltonian = fhj_hamiltonian_sym(dims=2)
     template = discretize(hamiltonian, grid=lat)
 
     def shape(site):
@@ -107,15 +106,24 @@ def generate_pf_tripartite(
     V_barr_R,
     Delta_0,
     theta_LR,
-    alpha_z_L,
-    alpha_z_C,
-    alpha_z_R,
-    h_x_L,
-    h_x_C,
-    h_x_R,
-    h_y_L,
-    h_y_C,
-    h_y_R,
+    alpha_x_L = 0,
+    alpha_x_C = 0,
+    alpha_x_R = 0,
+    alpha_y_L = 0,
+    alpha_y_C = 0,
+    alpha_y_R = 0,
+    alpha_z_L = 0,
+    alpha_z_C = 0,
+    alpha_z_R = 0,
+    h_x_L = 0,
+    h_x_C = 0,
+    h_x_R = 0,
+    h_y_L = 0,
+    h_y_C = 0,
+    h_y_R = 0,
+    h_z_L = 0,
+    h_z_C = 0,
+    h_z_R = 0,
 ):
 
     """
@@ -156,10 +164,18 @@ def generate_pf_tripartite(
         return 0 * f_L(x) + theta_LR * f_R(x)
 
     def alpha_x(x, y):
-        return +0 * (f_C(x) + f_BL(x) + f_BR(x)) + 0 * f_L(x) + 0 * f_R(x)
+        return (
+            +alpha_x_C * (f_C(x) + f_BL(x) + f_BR(x))
+            + alpha_x_L * f_L(x)
+            + alpha_x_R * f_R(x)
+        )
 
     def alpha_y(x, y):
-        return +0 * (f_C(x) + f_BL(x) + f_BR(x)) + 0 * f_L(x) + 0 * f_R(x)
+        return (
+            +alpha_y_C * (f_C(x) + f_BL(x) + f_BR(x))
+            + alpha_y_L * f_L(x)
+            + alpha_y_R * f_R(x)
+        )
 
     def alpha_z(x, y):
         return (
@@ -175,7 +191,7 @@ def generate_pf_tripartite(
         return +h_y_C * (f_C(x) + f_BL(x) + f_BR(x)) + h_y_L * f_L(x) + h_y_R * f_R(x)
 
     def h_z(x, y):
-        return +0 * (f_C(x) + f_BL(x) + f_BR(x)) + 0 * f_L(x) + 0 * f_R(x)
+        return +h_z_C * (f_C(x) + f_BL(x) + f_BR(x)) + h_z_L * f_L(x) + h_z_R * f_R(x)
 
     return V, Delta, theta, alpha_x, alpha_y, alpha_z, h_x, h_y, h_z
 

@@ -1,0 +1,16 @@
+{
+    "k_c": 1465.3777384615385,
+    "beta": 0,
+    "alpha_c": 0,
+    "V": "        \"V\": lambda *args: 0,\n",
+    "Delta": "        \"Delta\": lambda *args: 0,\n",
+    "theta": "        \"theta\": lambda *args: 0,\n",
+    "alpha_x": "        \"alpha_x\": lambda *args: 0,\n",
+    "alpha_y": "        \"alpha_y\": lambda *args: 0,\n",
+    "alpha_z": "        \"alpha_z\": lambda *args: 0,\n",
+    "h_x": "        \"h_x\": lambda *args: 0,\n",
+    "h_y": "        \"h_y\": lambda *args: 0,\n",
+    "h_z": "        \"h_z\": lambda *args: 0,\n",
+    "cos": null,
+    "sin": null
+}

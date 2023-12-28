@@ -8,6 +8,7 @@ import scipy.sparse.linalg as sla
 from types import SimpleNamespace
 
 ##################################################################
+
 # Pauli matrices
 pauli = SimpleNamespace(
 s0 = np.array([[1.0, 0.0], [0.0, 1.0]]),
@@ -17,25 +18,25 @@ sz = np.array([[1.0, 0.0], [0.0, -1.0]]),
 )
 
 # Kron products
-t0s0 = np.kron(s0, s0),
-t0sx = np.kron(s0, sx),
-t0sy = np.kron(s0, sy),
-t0sz = np.kron(s0, sz),
+t0s0 = np.kron(pauli.s0, pauli.s0),
+t0sx = np.kron(pauli.s0, pauli.sx),
+t0sy = np.kron(pauli.s0, pauli.sy),
+t0sz = np.kron(pauli.s0, pauli.sz),
 
-txs0 = np.kron(sx, s0),
-txsx = np.kron(sx, sx),
-txsy = np.kron(sx, sy),
-txsz = np.kron(sx, sz),
+txs0 = np.kron(pauli.sx, pauli.s0),
+txsx = np.kron(pauli.sx, pauli.sx),
+txsy = np.kron(pauli.sx, pauli.sy),
+txsz = np.kron(pauli.sx, pauli.sz),
 
-tys0 = np.kron(sy, s0),
-tysx = np.kron(sy, sx),
-tysy = np.kron(sy, sy),
-tysz = np.kron(sy, sz),
+tys0 = np.kron(pauli.sy, pauli.s0),
+tysx = np.kron(pauli.sy, pauli.sx),
+tysy = np.kron(pauli.sy, pauli.sy),
+tysz = np.kron(pauli.sy, pauli.sz),
 
-tzs0 = np.kron(sz, s0),
-tzsx = np.kron(sz, sx),
-tzsy = np.kron(sz, sy),
-tzsz = np.kron(sz, sz),
+tzs0 = np.kron(pauli.sz, pauli.s0),
+tzsx = np.kron(pauli.sz, pauli.sx),
+tzsy = np.kron(pauli.sz, pauli.sy),
+tzsz = np.kron(pauli.sz, pauli.sz),
 
 pauli.sp = (pauli.sx + 1j * pauli.sy) / 2
 pauli.sm = (pauli.sx - 1j * pauli.sy) / 2
